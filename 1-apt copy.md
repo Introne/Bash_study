@@ -17,6 +17,10 @@ sudo sed -i.bak 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrad
 
 设置ubuntu的系统升级Prompt=never
 
+将etc下配置文件release-upgrades中Prompt=以外的字符串替换为Prompt=never，并保存
+
+同时会以release-upgrades.bak文件备份原来未修改文件内容，以确保原始文件内容安全性，防止错误操作而无法恢复原来内容。
+
 ###### 背景
 sudo是linux系统管理指令，是允许系统管理员让普通用户执行一些或者全部的root命令的一个工具.
 
@@ -34,6 +38,10 @@ s 搜索一次
 sg 搜索全局
 \#\#\#： s#替换前#替换后#g
 / / / : 与###一样
+
+
+'s/代表是替换
+
 
 echo "==> Switch to an adjacent mirror"
 
