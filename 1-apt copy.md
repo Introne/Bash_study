@@ -39,12 +39,11 @@ sg 搜索全局
 \#\#\#： s#替换前#替换后#g
 / / / : 与###一样
 
+指令：
+'s/代表替换：注's/A/B' 即将文件内所有A替换为B
 
-'s/代表是替换
-
-
+```bash
 echo "==> Switch to an adjacent mirror"
-
 # https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu
 cat <<EOF > list.tmp
 deb https://mirrors.ustc.edu.cn/ubuntu/ focal main restricted universe multiverse
@@ -64,14 +63,26 @@ deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted univ
 # deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
 
 EOF
+```
+
+创建一个list.tmp的临时文件，包含EOF(end of file)前的内容
+
+##### 背景
+###### cat <<EOF 
+使用cat <<EOF时，我们输入完成后，需要在一个新的一行输入EOF结束stdin的输入。EOF必须顶行写，前面不能用制表符或者空格。
+<<-可以避免EOF误被stdin的情况。
+
+
+
+
 
 if [ ! -e /etc/apt/sources.list.bak ]; then
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 fi
 sudo mv list.tmp /etc/apt/sources.list
 
-# Virtual machines needn't this and I want life easier.
-# https://help.ubuntu.com/lts/serverguide/apparmor.html
+\# Virtual machines needn't this and I want life easier.
+\# https://help.ubuntu.com/lts/serverguide/apparmor.html
 if [ "$(whoami)" == 'vagrant' ]; then
     echo "==> Disable AppArmor"
     sudo service apparmor stop
