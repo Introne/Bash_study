@@ -77,8 +77,10 @@ EOF
 \>> 重定向，在原内容后续上
 
 ###### deb和deb-src
-deb行是相对于二进制软件包的，您可以使用进行安装apt。
-deb-src相对于源代码包（由下载apt-get source $package），然后进行编译。
+deb 或是 deb-src 表明了所获取的软件包档案类型。
+deb：档案类型为二进制预编译软件包，一般我们所用的档案类型。相对于apt
+deb-src：档案类型为用于编译二进制软件包的源代码。相对于源代码包（apt-get source $package）
+
 
 
 
