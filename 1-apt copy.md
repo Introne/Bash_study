@@ -64,7 +64,7 @@ deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted univ
 
 EOF
 ```
-
+完成ubuntu 20.04 LTS的前期相关配置 
 创建一个list.tmp的临时文件，包含EOF(end of file)前的内容
 
 ##### 背景
@@ -72,7 +72,13 @@ EOF
 使用cat <<EOF时，我们输入完成后，需要在一个新的一行输入EOF结束stdin的输入。EOF必须顶行写，前面不能用制表符或者空格。
 <<-可以避免EOF误被stdin的情况。
 
+###### 重定向 
+\> 重定向，覆盖原内容
+\>> 重定向，在原内容后续上
 
+###### deb和deb-src
+deb行是相对于二进制软件包的，您可以使用进行安装apt。
+deb-src相对于源代码包（由下载apt-get source $package），然后进行编译。
 
 
 
