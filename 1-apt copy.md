@@ -64,8 +64,19 @@ deb-src https://mirrors.ustc.edu.cn/ubuntu/ focal-backports main restricted univ
 
 EOF
 ```
-完成ubuntu 20.04 LTS的前期相关配置 
-创建一个list.tmp的临时文件，包含EOF(end of file)前的内容
+/etc/apt/sources.list是一个普通可编辑的文本文件，保存了ubuntu软件更新的源服务器的地址。
+
+该命令行通过生成 /etc/apt/sources.list临时文件，结合下一个条件判断命令行，将 /etc/apt/sources.list 文件中 Ubuntu 默认的源地址 http://archive.ubuntu.com/ 替换为 http://mirrors.ustc.edu.cn/ 。
+
+##### why替换地址？
+ubuntu 图形安装器会根据用户设定的时区推断 locale，这导致默认的源地址通常不是 http://archive.ubuntu.com/， 而是 http://<country-code>.archive.ubuntu.com/ubuntu/ 。因此ubuntu默认的软件更新源也是国外的，速度超级慢，用"apt install"安装软件时各种网络问题也是层出不穷。这时我们可以为 apt-get 设置成国内镜像代理。
+
+
+修改源之前需要先查看版本名，ubuntu20.04对应的是“focal”，也就是以上镜像源中展示的。“eoan”代表ubuntu19.10，“xenial”代表ubuntu16.04，“bionic”代表ubuntu18.04，“disco”代表ubuntu19.04。
+用以下命令查看版本名：
+```bash
+lsb_release -c
+```
 
 ##### 背景
 ###### cat <<EOF 
@@ -81,14 +92,19 @@ deb 或是 deb-src 表明了所获取的软件包档案类型。
 deb：档案类型为二进制预编译软件包，一般我们所用的档案类型。相对于apt
 deb-src：档案类型为用于编译二进制软件包的源代码。相对于源代码包（apt-get source $package）
 
+###### https防劫持
+使用 HTTPS 可以有效避免国内运营商的缓存劫持。
 
-
-
+```bash
 if [ ! -e /etc/apt/sources.list.bak ]; then
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 fi
 sudo mv list.tmp /etc/apt/sources.list
+```
+在替换国内镜像软件源之前，备份原来的软件源并另存。
+由一个条件判断语句执行此功能：如果没有list.bak备份文件，就通过复制进行备份，然后将上一个命令中生成的带有国内镜像源的文件覆盖sources.list文件。
 
+```bash
 \# Virtual machines needn't this and I want life easier.
 \# https://help.ubuntu.com/lts/serverguide/apparmor.html
 if [ "$(whoami)" == 'vagrant' ]; then
@@ -96,17 +112,80 @@ if [ "$(whoami)" == 'vagrant' ]; then
     sudo service apparmor stop
     sudo update-rc.d -f apparmor remove
 fi
+```
+AppArmor限制太多，关掉它！
+使用sudo service apparmor stop禁用Apparmor，并使用sudo update-rc.d -f apparmor defaults删除内核模块
 
+#### 背景
+##### Whoami
+whoami命令用于显示当前系统的有效用户名称。
+登陆到虚拟机里面，默认的用户叫做 vagrant，可以用通过 whoami 命令查看
+##### Vagrant
+Vagrant 通过一个简单的配置文件为各种虚拟化提供程序提供了一个抽象层，可让开发人员和操作人员快速启动运行 Linux 或任何其他操作系统的虚拟机 (VM)。   
+通过Vagrant创建虚机需要先导入镜像文件，也就是box，它们默认存储的位置在用户目录下的 .vagrant.d 目录下
+##### $()
+$() 执行命令代换, 即取所包含的命令的输出作为文本值参与运行, 文本值甚至可以是命令, 如直接运行$(echo pwd) 则相当于直接运行pwd.
+##### AppArmor
+AppArmor是一款与SeLinux类似的安全框架/工具，其主要作用是控制应用程序的各种权限，例如对某个目录/文件的读/写，对网络端口的打开/读/写等等。
+##### sudo服务（借权服务）
+作用：将特定命令的执行权限赋予指定用户，以保证普通用户可以完成原本root管理员才能完成的任务。
+配置原则：在保证普通用户完成相应工作的前提下，尽可能少地赋予额外的权限
+功能：
+    限制用户执行指定的命令
+    记录用户执行的每一条命令
+    验证后的5分钟内无需再次验证
+##### service 命令
+service命令是用来控制系统服务的实用工具，它以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态。
+语法： service < option > | --status-all | [ service_name [ command | –full-restart ] ]
+option的值如下：
+-h：显示 service 的帮助信息
+-status：显示所服务的状态
+--status-all：查看所有服务的状态
+service_name：服务名，即 /etc/init.d 目录下的脚本文件名
+command：系统服务脚本支持的控制命令，如：start、stop 和 restart
+--full-restart：重启所有服务
+##### update-rc.d命令
+update-rc.d命令用来更新系统启动项的脚本。这些启动项脚本的链接位于/etc/rcN.d/目录（N代表0～6），对应脚本位于/etc/init.d/目录。
+Ubuntu中的运行级别:
+    0（关闭系统）
+    1（单用户模式，只允许root用户对系统进行维护。）
+    2 到 5（多用户模式，其中3为字符界面，5为图形界面。）
+    6（重启系统）
+
+删除一个服务: sudo update-rc.d ServiceName remove
+
+```bash
 echo "==> Disable whoopsie"
 sudo sed -i 's/report_crashes=true/report_crashes=false/' /etc/default/whoopsie
 sudo service whoopsie stop
+```
+禁用whoopsie
+将etc下whoopsie配置文件中的report_crashes=true参数更改为report_crashes=false，并保存；然后利用service命令禁用whoopsie服务。
 
+#### 背景
+##### 什么是whoopsie？
+Whoopsie 是Ubuntu 错误跟踪器的一部分。它获取应用程序失败时apport创建和呈现的崩溃报告，并将它们发送到 Canonical 服务器进行进一步处理。
+Apport是一个错误收集系统，会收集软件崩溃、未处理异常和其他，包括程序bug，并为调试目的生成崩溃报告。 当一个应用程序崩溃或者出现Bug时候，Apport就会通过弹窗警告用户并且询问用户是否提交崩溃报告。
+
+```bash
 echo "==> Install linuxbrew dependences"
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y install build-essential curl file git
 sudo apt-get -y install libbz2-dev zlib1g-dev libzstd-dev
 # sudo apt-get -y install libcurl4-openssl-dev libexpat-dev libncurses-dev
+```
+
+安装linuxbrew依赖项
+要设置 Brew，我们需要在系统上安装一些依赖项，如GCC、Glibc 和 64 位 x86_64 CPU等
+
+
+#### 背景
+##### why need linuxbrew
+普通用户想安装应用往往比较麻烦，他们没有写入 /etc/,/bin/,/sbin/ 等重要目录的权限，只能在configure时通过 --prefix=$HOME 来将应用安装在HOME目录下。
+linuxbrew是著名MacOS包管理器homebrew的linux版，它可以让你很方便地安装应用到HOME目录下。 
+
+
 
 echo "==> Install other software"
 sudo apt-get -y install aptitude parallel vim screen xsltproc numactl
