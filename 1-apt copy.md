@@ -1,15 +1,18 @@
 ## bash基本命令解释（1-apt）
-   
+
+### 学习第一弹：一帆风顺
 ```
 #!/usr/bin/env bash  
 ```
 设置Bash解释器运行环境
 
+### 学习第二弹：两全其美
 ```
 echo "====> Install softwares via apt-get <===="
 ```
-输出""中的内容
+输出""中的内容：提示以下的命令是通过apt-get安装一些app
 
+### 学习第三弹：三神俱喜
 ```
 echo "==> Disabling the release upgrader"
 sudo sed -i.bak 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrades
@@ -42,6 +45,7 @@ sg 搜索全局
 指令：
 's/代表替换：注's/A/B' 即将文件内所有A替换为B
 
+### 学习第四弹：四季发财
 ```bash
 echo "==> Switch to an adjacent mirror"
 # https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu
@@ -95,6 +99,12 @@ deb-src：档案类型为用于编译二进制软件包的源代码。相对于�
 ###### https防劫持
 使用 HTTPS 可以有效避免国内运营商的缓存劫持。
 
+##### 镜像
+镜像，原意是光学里指的物体在镜面中所成之像。引用到电脑网络上，一个网站的镜像是指对一个网站内容的拷贝。镜像通常用于为相同信息内容提供不同的源，特别是在下载量大的时候提供了一种可靠的网络连接。制作镜像是一种文件同步的过程。
+有了镜像网站的好处是：如果不能对主站作正常访问（如某个服务器死掉或出了意外），但仍能通过其它服务器正常浏览。
+镜像可以提高用户在某个地区的下载速度。譬如一个美国网站的中国镜像可以使来自中国的用户直接从这个中国的镜像访问，从而加快了速度。这可以看作是一种全球范围的缓存。
+
+### 学习第五弹：五星高照 
 ```bash
 if [ ! -e /etc/apt/sources.list.bak ]; then
     sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
@@ -102,8 +112,36 @@ fi
 sudo mv list.tmp /etc/apt/sources.list
 ```
 在替换国内镜像软件源之前，备份原来的软件源并另存。
-由一个条件判断语句执行此功能：如果没有list.bak备份文件，就通过复制进行备份，然后将上一个命令中生成的带有国内镜像源的文件覆盖sources.list文件。
+由一个条件判断语句执行此功能：如果list.bak备份文件不存在，就通过复制进行备份，然后将上一个命令中生成的带有国内镜像源的文件覆盖sources.list文件。
+#### 背景：
+##### 文件比较运算符
+-e filename：如果 filename存在，则为真  [ -e /var/log/syslog ]
+-d filename：如果 filename为目录，则为真  [ -d /tmp/mydir ]
+-f filename：如果 filename为常规文件，则为真  [ -f /usr/bin/grep ]
+-L filename：如果 filename为符号链接，则为真  [ -L /usr/bin/grep ]
+-r filename：如果 filename可读，则为真  [ -r /var/log/syslog ]
+-w filename：如果 filename可写，则为真  [ -w /var/mytmp.txt ]
+-x filename：如果 filename可执行，则为真  [ -L /usr/bin/grep ]
 
+##### 字符串比较运算符 （请注意引号的使用，这是防止空格扰乱代码的好方法）
+-z string 如果 string长度为零，则为真  [ -z “$myvar” ]
+-n string 如果 string长度非零，则为真  [ -n “$myvar” ]
+ 
+##### 算术比较运算符
+num1-eq num2 等于 [ 3 -eq $mynum ]
+ num1-ne num2 不等于 [ 3 -ne $mynum ]
+ num1-lt num2 小于 [ 3 -lt $mynum ]
+ num1-le num2 小于或等于 [ 3 -le $mynum ]
+ num1-gt num2 大于 [ 3 -gt $mynum ]
+ num1-ge num2 大于或等于 [ 3 -ge $mynum ]
+
+ ##### 逻辑符
+条件表达式的相反： 逻辑非 !  
+条件表达式的并列：逻辑与 –a                   
+条件表达式的或：逻辑或 -o                   
+
+
+### 学习第六弹：六六大顺 
 ```bash
 \# Virtual machines needn't this and I want life easier.
 \# https://help.ubuntu.com/lts/serverguide/apparmor.html
@@ -154,6 +192,7 @@ Ubuntu中的运行级别:
 
 删除一个服务: sudo update-rc.d ServiceName remove
 
+### 学习第七弹：七星高照 
 ```bash
 echo "==> Disable whoopsie"
 sudo sed -i 's/report_crashes=true/report_crashes=false/' /etc/default/whoopsie
@@ -167,6 +206,7 @@ sudo service whoopsie stop
 Whoopsie 是Ubuntu 错误跟踪器的一部分。它获取应用程序失败时apport创建和呈现的崩溃报告，并将它们发送到 Canonical 服务器进行进一步处理。
 Apport是一个错误收集系统，会收集软件崩溃、未处理异常和其他，包括程序bug，并为调试目的生成崩溃报告。 当一个应用程序崩溃或者出现Bug时候，Apport就会通过弹窗警告用户并且询问用户是否提交崩溃报告。
 
+### 学习第八弹：八面春风 
 ```bash
 echo "==> Install linuxbrew dependences"
 sudo apt-get -y update
@@ -176,20 +216,83 @@ sudo apt-get -y install libbz2-dev zlib1g-dev libzstd-dev
 # sudo apt-get -y install libcurl4-openssl-dev libexpat-dev libncurses-dev
 ```
 
-安装linuxbrew依赖项
-要设置 Brew，我们需要在系统上安装一些依赖项，如GCC、Glibc 和 64 位 x86_64 CPU等
-
+进行软件更新，并安装linuxbrew依赖项
+要设置Brew，我们需要在系统上安装一些依赖项，如GCC、Glibc 和 64 位 x86_64 CPU等
 
 #### 背景
 ##### why need linuxbrew
 普通用户想安装应用往往比较麻烦，他们没有写入 /etc/,/bin/,/sbin/ 等重要目录的权限，只能在configure时通过 --prefix=$HOME 来将应用安装在HOME目录下。
-linuxbrew是著名MacOS包管理器homebrew的linux版，它可以让你很方便地安装应用到HOME目录下。 
+linuxbrew是著名MacOS包管理器homebrew的linux版，它可以很方便地安装应用到HOME目录下。 
+
+##### 关于APT，apt-和apt
+APT(Advanced Packaging Tool)：Debian 系 Linux 特有的软件包管理体系，相较于先前的从源码开始编译软件，极大地方便了在 Linux 下对软件进行管理
+apt-：以 apt-get 和 apt-cache 为代表，它们是 Debian 软件包管理体系中各种功能对应的命令行工具
+apt：在原有 apt-get 和 apt-cache 基础上，对基础软件包管理操作进行简化和优化，专为新手终端用户设计的命令行工具
+
+###### apt-详解
+同步远程仓库中的记录表：sudo apt-get update
+将本地所有软件包更新至远程仓库最新版本：sudo apt-get upgrade
+在软件仓库中搜索某一软件包：apt-cache search <package>
+查看软件包具体信息：apt-cache show <package>
+安装软件包：sudo apt-get install <package>
+卸载软件包：sudo apt-get remove <package>
 
 
+##### sudo apt-get update 与upgrade
+在windows下安装软件，我们只需要有.exe文件，然后双击，直接安装就可以了。但Linux下，不是这样的。每个Linux的发行版，比如Ubuntu，都会维护一个自己的软件仓库，我们常用的几乎所有软件都在这里面。这里面的软件绝对安全，而且绝对的能正常安装。
+那我们要怎么安装呢？在Ubuntu下，我们维护一个源列表，源列表里面都是一些网址信息，这每一条网址就是一个源，这个地址指向的数据标识着这台源服务器上有哪些软件可以安装使用。
+编辑源命令：
+```bash
+sudo gedit /etc/apt/sources.list
+```
 
+在这个文件里加入或者注释（加#）掉一些源后，保存。这时候，我们的源列表里指向的软件就会增加或减少一部分。
+接一下要做的就是：
+```bash
+sudo apt-get update
+```
+这个命令，会访问源列表里的每个网址，并读取软件列表，然后保存在本地电脑。我们在新立得软件包管理器里看到的软件列表，都是通过update命令更新的。
+
+update后，可能需要upgrade一下。
+```bash
+sudo apt-get upgrade
+```
+这个命令，会把本地已安装的软件，与刚下载的软件列表里对应软件进行对比，如果发现已安装的软件版本太低，就会提示你更新。如果你的软件都是最新版本，会提示：
+升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 0 个软件包未被升级。
+
+总而言之，update是更新软件列表，upgrade是更新软件。
+
+##### apt-get -y 中的-y
+apt-get -y中的-y是同意的意思。指跳过系统提示，直接运行指令。
+
+##### build-essential软件包
+Ubuntu缺省情况下，并没有提供C/C++的编译环境，因此还需要手动安装。但是如果单独安装gcc以及g++比较麻烦，幸运的是，Ubuntu提供了一个build-essential软件包。查看该软件包的依赖关系：
+```bash
+snwang@DESKTOP-T89G9DA:~$ apt-cache depends build-essential
+build-essential
+ |Depends: libc6-dev
+  Depends: <libc-dev>
+    libc6-dev
+  Depends: gcc
+  Depends: g++
+  Depends: make
+    make-guile
+  Depends: dpkg-dev
+```
+也就是说，安装了该软件包，编译c/c++所需要的软件包也都会被安装。因此如果想在Ubuntu中编译c/c++程序,只需要安装该软件包就可以了。
+
+##### curl
+curl是一种数据传输程序，使用其中一种支持的协议（DICT，FILE，FTP，FTPS，GOPHER，HTTP，HTTPS，IMAP，IMAPS，LDAP，LDAPS，POP3，POP3S，RTMP，RTSP，SCP，SFTP，SMTP，SMTPS，TELNET和TFTP）从服务器或服务器传输数据的工具。该命令旨在无需用户交互即可工作。
+
+### 学习第九弹：九久康泰 
+```bash
 echo "==> Install other software"
 sudo apt-get -y install aptitude parallel vim screen xsltproc numactl
+```
+安装一些其他的工具
 
+
+```bash
 echo "==> Install develop libraries"
 # sudo apt-get -y install libreadline-dev libedit-dev
 sudo apt-get -y install libdb-dev libxml2-dev libssl-dev libncurses5-dev # libgd-dev
@@ -198,28 +301,63 @@ sudo apt-get -y install libdb-dev libxml2-dev libssl-dev libncurses5-dev # libgd
 
 # Gtk stuff, Need by alignDB
 # install them in a fresh machine to avoid problems
+```
+安装一些开发库
+
+```bash
 echo "==> Install gtk3"
 sudo apt-get -y install libcairo2-dev libglib2.0-0 libglib2.0-dev libgtk-3-dev libgirepository1.0-dev
 sudo apt-get -y install gir1.2-glib-2.0 gir1.2-gtk-3.0 gir1.2-webkit-3.0
 
 echo "==> Install gtk3 related tools"
 # sudo apt-get -y install xvfb glade
+```
+安装gtk3
+gtk(gimp toolkit)是GIMP 开发过程中用来管理图型界面的一套工具程序库，是完全使用C语言开发的。
 
+
+
+```bash
 echo "==> Install graphics tools"
 sudo apt-get -y install gnuplot graphviz imagemagick
-
 #echo "==> Install nautilus plugins"
 #sudo apt-get -y install nautilus-open-terminal nautilus-actions
 
 # Mysql will be installed separately.
 # Remove system provided mysql package to avoid confusing linuxbrew.
+```
+安装一些画图工具：gnuplot graphviz imagemagick；。
+
+#### 背景
+##### Mysql
+SQL（structured query language）是一种标准的数据库语言。包含以下3个功能：
+数据创建语句，能够帮助定义数据库和对象，例如表，视图，触发器，存储过程；
+数据操纵语言，能够更新数据，查询数据；
+数据控制语言，帮你管理数据权限。
+
+MySQL由 My 和 SQL组成
+
+MySQL是数据库管理系统，能够帮助我们管理关系型数据库，并且是开源的，意味着这是免费的，如果必要，我们可以修改源代码。
+
+
+```bash
 echo "==> Remove system provided mysql"
 sudo apt-get -y purge mysql-common
+```
+#### 背景
+##### apt-get purge 
+apt-get remove 会删除软件包而保留软件的配置文件
+apt-get purge 会同时清除软件包和软件的配置文件，即彻底删除软件包。
 
 echo "==> Restore original sources.list"
 if [ -e /etc/apt/sources.list.bak ]; then
     sudo rm /etc/apt/sources.list
     sudo mv /etc/apt/sources.list.bak /etc/apt/sources.list
 fi
+恢复原始的sources.list：用上述的sources.list.bak替代原有的sources.list
 
+### 学习第十弹：十全十美 
+```bash
 echo "====> Basic software installation complete! <===="
+```
+Basic software 暂且备好啦，诸事大吉！！！
