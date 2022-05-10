@@ -1,2 +1,3 @@
 # Bash_study
-Basic commands
+Basic commands explain by sainan.
+Message from: Network
