@@ -24,7 +24,7 @@ sudo sed -i.bak 's/^Prompt=.*$/Prompt=never/' /etc/update-manager/release-upgrad
 
 同时会以release-upgrades.bak文件备份原来未修改文件内容，以确保原始文件内容安全性，防止错误操作而无法恢复原来内容。
 
-###### 背景
+#### 背景
 sudo是linux系统管理指令，是允许系统管理员让普通用户执行一些或者全部的root命令的一个工具.
 
 sed：Stream Editor文本流编辑，sed命令是把文件一行行的读到内存中当成一行处理,是一个“非交互式的”面向字符流的编辑器,它也被称为流编辑器。跟车间中的流水线一样，sed能一行一行的逐个处理，获取到需要的内容后显示到屏幕上。sed能配合正则表达式使用。
