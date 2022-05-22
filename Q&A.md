@@ -1,6 +1,45 @@
 # Q$A集锦
 
 
+## export命令
+在shell中执行程序时，shell会提供一组环境变量。export可新增，修改或删除环境变量，供后续执行的程序使用。export的效力仅及于该此登陆操作。
+参数：
+　-f 　代表[变量名称]中为函数名称。
+　-n 　删除指定的变量。变量实际上并未删除，只是不会输出到后续指令的执行环境中。
+　-p 　列出所有的shell赋予程序的环境变量123
+ 
+延伸
+export设置环境变量是暂时的，只在本次登录中有效，可修改如下文件来使命令长久有效。
+ 
+1. 修改profile文件
+#vi /etc/profile1
+在里面加入:
+```bash
+export PATH="$PATH:/opt/au1200_rm/build_tools/bin"1
+```
+这个在我们的机器上是大家共用的，建议不修改这个，只修改自己根路径下的。
+ 
+2. 修改本id根路径下的.bashrc或.bash_profile文件：
+# vi /home/zhaodw/.bash_profile1
+在里面加入：
+```bash
+export PATH="$PATH:/opt/au1200_rm/build_tools/bin"1
+```
+
+注意：
+1、执行脚本时是在一个子shell环境运行的，脚本执行完后该子shell自动退出；
+2、一个shell中的系统环境变量才会被复制到子shell中（用export定义的变量）；
+3、一个shell中的系统环境变量只对该shell或者它的子shell有效，该shell结束时变量消失（并不能返回到父shell中）。
+4、不用export定义的变量只对该shell有效，对子shell也是无效的。
+
+
+
+## 进程
+进程是一个运行着的程序，是代码的动态形式，进程有如下属性：
+独立的内核堆栈
+进程控制块
+独立的存储空间
+
 
 ## export命令
 
