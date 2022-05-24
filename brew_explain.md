@@ -99,7 +99,7 @@ sed：Stream Editor文本流编辑，能配合正则表达式使用。
 's/代表替换：'s/查找内容/替换为的字串/'
 \表示转义
 
-### head -n 1（<font color=Blue>不太确定该命令在此处的功能</font>）
+### head -n 1（<font color=Blue>不太确定该命令在此处的意义</font>）
 将上个管道的输出perl/5.34.0，首行输出
 
 head命令
@@ -113,8 +113,12 @@ head命令
 -c<字节> 显示字节数
 -n<行数> 显示的行数
 
-## 双引号与单引号的区别
+### 双引号与单引号的区别
 双引号内其可以包含特殊字符(单引号直接输出内部字符串，不解析特殊字符；双引号内则会解析特殊字符)，包括', ", $, \,如果要忽略特殊字符，就可以利用\来转义，忽略特殊字符，作为普通字符输出
+
+### eval命令
+eval（evaluation）
+Double check!!
 
 ### 一些命令输出
 ```bash
@@ -132,6 +136,33 @@ snwang@DESKTOP-T89G9DA:~$ brew --prefix
 /home/linuxbrew/.linuxbrew
 ```
 
+## 安装cpanm
+```bash
+hash cpanm 2>/dev/null || {
+    curl -L https://cpanmin.us |
+        perl - -v --mirror-only --mirror http://mirrors.ustc.edu.cn/CPAN/ App::cpanminus
+}
+```
+
+### hash
+linux系统下会有一个hash表，当你刚开机时这个hash表为空，每当你执行过一条命令时，hash表会记录下这条命令的路径，就相当于缓存一样。第一次执行命令shell解释器默认的会从PATH路径下寻找该命令的路径，当你第二次使用该命令时，shell解释器首先会查看hash表，没有该命令才会去PATH路径下寻找。
+hash可以提高命令的调用速率！！
+
+### cpanm
+cpanm是安装 Perl模块的最方便的方法。
+
+### 双竖线‘||’
+用双竖线‘||’可以分割多条命令，执行的时候遵循如下规则，如果前一条命令为真，则后面的命令不会执行，如果前一条命令为假，则继续执行后面的命令。
+
+### 2>/dev/null
+把错误输出到 “黑洞”
+
+2是标准错误的文件描述符
+>是重定向符号，该重定向会覆盖原有内容
+>/dev/null 是一个特殊的设备文件，这个文件接收到任何数据都会被丢弃。因此，null 这个设备通常也被称为位桶（bit bucket）或黑洞。
+
+
+综上，2>/dev/null 的意思就是将标准错误 stderr 删掉。
 
 #### link
 cache： https://blog.csdn.net/boyaaboy/article/details/102539578
