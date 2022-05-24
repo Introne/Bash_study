@@ -99,7 +99,7 @@ sed：Stream Editor文本流编辑，能配合正则表达式使用。
 's/代表替换：'s/查找内容/替换为的字串/'
 \表示转义
 
-### head -n 1（<font color=Blue>不太确定该命令在此处的意义</font>）
+### head -n 1（<font color=skyBlue>不太确定该命令在此处的意义</font>）
 将上个管道的输出perl/5.34.0，首行输出
 
 head命令
@@ -145,10 +145,18 @@ hash cpanm 2>/dev/null || {
 ```
 
 ### hash
-linux系统下会有一个hash表，当你刚开机时这个hash表为空，每当你执行过一条命令时，hash表会记录下这条命令的路径，就相当于缓存一样。第一次执行命令shell解释器默认的会从PATH路径下寻找该命令的路径，当你第二次使用该命令时，shell解释器首先会查看hash表，没有该命令才会去PATH路径下寻找。
-hash可以提高命令的调用速率！！
+1.什么是hash？
+linux系统下会有一个hash表，刚开机时会显示hash为空，当你执行过一次或多次命令，hash就会记录下执行过的命令的路径第一次执行命令shell解释器默认的会从PATH路径下寻找该命令的路径，当你第二次使用该命令时，shell解释器首先会查看hash表，没有该命令才会去PATH路径下寻找
+2.hash表的作用是什么?
+hash大大提高命令的调用速率。
+3.参数
+	-l  显示hash表内容	
+	-r 清除hash表
+	-d openssl 删除表中某一条（删除openssl）
+	-t openssl 查看openssl命令路径（hash表中没有的话，可以调用which命令）
+	-p /usr/bin/openssl aliesopenssl 往hash表中添加一条，执行aliesopenssl即	执行openssl命令（起别名）
 
-### cpanm
+### cpanm（<font color=VioletRed>不太理解hash cpanm的意思，是判断是否有安装后续命令的意思么？</font>）
 cpanm是安装 Perl模块的最方便的方法。
 
 ### 双竖线‘||’
@@ -161,8 +169,15 @@ cpanm是安装 Perl模块的最方便的方法。
 >是重定向符号，该重定向会覆盖原有内容
 >/dev/null 是一个特殊的设备文件，这个文件接收到任何数据都会被丢弃。因此，null 这个设备通常也被称为位桶（bit bucket）或黑洞。
 
-
 综上，2>/dev/null 的意思就是将标准错误 stderr 删掉。
+
+### curl -L
+curl是一种数据传输程序，使用其中一种支持的协议（DICT，FILE，FTP，FTPS，GOPHER，HTTP，HTTPS，IMAP，IMAPS，LDAP，LDAPS，POP3，POP3S，RTMP，RTSP，SCP，SFTP，SMTP，SMTPS，TELNET和TFTP）从服务器或服务器传输数据的工具。该命令旨在无需用户交互即可工作。
+
+参数：
+-L/--location	跟踪重定向
+
+
 
 #### link
 cache： https://blog.csdn.net/boyaaboy/article/details/102539578

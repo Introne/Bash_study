@@ -16,7 +16,8 @@ pkg-config 是一个常用的库信息提取工具。能根据软件安装时软
 # building tools
 
 ## autoconf
-GNU Autoconf是一个在Bourne shell下制作供编译、安装和打包软件的配置脚本（Configure_script (computing)）的工具[1]。Autoconf并不受程式语言限制，常用于C、C++、Erlang和Objective-C。配置脚本控制了一个软件包在特定系统上的安装。在进行一系列测试后，配置脚本从模板中生成makefile与头文件进而调整软件包，使之适应某一种系统。Autoconf与Automake、Libtool等软件组成了GNU构建系统
+GNU Autoconf是一个在Bourne shell下制作供编译、安装和打包软件的配置脚本（Configure_script (computing)）的工具[1]。Autoconf并不受程式语言限制，常用于C、C++、Erlang和Objective-C。配置脚本控制了一个软件包在特定系统上的安装。在进行一系列测试后，配置脚本从模板中生成makefile与头文件进而调整软件包，使之适应某一种系统。Autoconf与Automake、Libtool等软件组成了GNU构建系统。
+
 
 ## libtool
 
@@ -24,13 +25,15 @@ GNU Autoconf是一个在Bourne shell下制作供编译、安装和打包软件�
 
 ## automake
 
-### GUN构建系统
+## GUN构建系统：autoconf，automake、libtool
 
 用户通过configure->make->make install基于源码安装软件。然而大部分用户可能并不知道这个过程究竟做了些什么。
 
 configure脚本是由软件开发者维护并发布给用户使用的shell脚本。这个脚本的作用是检测系统环境，最终目的是生成Makefile和config.h。
 
 make通过读取Makefile文件，开始构建软件。而make install可以将软件安装到需要安装的位置。
+
+如果软件通过libtool构建，还会生成libtool脚本。
 
 ## cmake
 
@@ -69,4 +72,120 @@ make通过读取Makefile文件，开始构建软件。而make install可以将�
 
 ## nasm 
 
+## bzip2 
+
+## gzip 
+
+## libarchive  
+
+## libzip  
+
+## xz 
+
+#download tools
+
+## aria2 
+
+## curl 
+
+## wget
+
+# gnu
+
+## gnu-sed 
+
+## gnu-tar
+
+# other tools
+
+## screen 
+
+## stow 
+
+## htop 
+
+## parallel 
+
+## pigz 
+
+## cloc 
+
+## tree 
+
+## pv
+
+## jq 
+
+## pup 
+
+## datamash 
+
+## miller 
+
+## tsv-utils 
+
+## bat 
+
+## exa 
+
+## hyperfine 
+
+## ripgrep   
+
+## tealdeer
+
+## librsvg 
+
+## udunits 
+
+## proxychains-ng 
+
+## yasm
+
 ## yasm 
+
+## yasm 
+
+## yasm 
+
+## yasm
+
+## yasm 
+
+## yasm 
+
+## yasm 
+
+## yasm
+
+## yasm 
+
+## yasm 
+
+## yasm 
+
+## yasm
+
+## yasm 
+
+## yasm 
+
+## yasm 
+
+## yasm
+
+## yasm 
+
+## yasm 
+
+## yasm 
+
+## yasm
+
+## yasm 
+
+## yasm 
+
+## yasm 
+
+## yasm
