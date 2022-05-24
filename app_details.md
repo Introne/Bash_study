@@ -13,47 +13,60 @@ GCC编译器：GCC（GNU Compiler Collection）是由 GNU 开发的编程语言�
 ## pkg-config：Manage compile and link flags for libraries
 pkg-config 是一个常用的库信息提取工具。能根据软件安装时软件的.pc配置文件路径找到相应的头文件路径和库文件路径
 
-## Perl：Highly capable, feature-rich programming language
+# building tools
 
+## autoconf
+GNU Autoconf是一个在Bourne shell下制作供编译、安装和打包软件的配置脚本（Configure_script (computing)）的工具[1]。Autoconf并不受程式语言限制，常用于C、C++、Erlang和Objective-C。配置脚本控制了一个软件包在特定系统上的安装。在进行一系列测试后，配置脚本从模板中生成makefile与头文件进而调整软件包，使之适应某一种系统。Autoconf与Automake、Libtool等软件组成了GNU构建系统
 
-## gpatch
+## libtool
 
-## gpatch
+## autogen
 
-## gpatch
+## automake
 
-## gpatch
+### GUN构建系统
 
-## gpatch
+用户通过configure->make->make install基于源码安装软件。然而大部分用户可能并不知道这个过程究竟做了些什么。
 
-## gpatch
+configure脚本是由软件开发者维护并发布给用户使用的shell脚本。这个脚本的作用是检测系统环境，最终目的是生成Makefile和config.h。
 
-## gpatch
+make通过读取Makefile文件，开始构建软件。而make install可以将软件安装到需要安装的位置。
 
-## gpatch
+## cmake
 
-## gpatch
+## bison
 
-## gpatch
+## flex
 
-## gpatch
+#  libs
+## gd 
 
-## gpatch
+## gsl 
 
-## gpatch
+## jemalloc 
 
-## gpatch
+## boost
 
-## gpatch
+## fftw
 
-## gpatch
+## libffi
 
-## gpatch
+## libgit2 
 
-## gpatch
+## libxml2 
 
-## gpatch
+## libgcrypt 
 
-## gpatch
+## libxslt
 
-## gpatch
+## pcre 
+
+## libedit 
+
+## readline 
+
+## sqlite 
+
+## nasm 
+
+## yasm 
