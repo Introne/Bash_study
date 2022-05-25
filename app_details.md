@@ -16,8 +16,10 @@ pkg-config 是一个常用的库信息提取工具。能根据软件安装时软
 # building tools
 
 ## autoconf
-GNU Autoconf是一个在Bourne shell下制作供编译、安装和打包软件的配置脚本（Configure_script (computing)）的工具[1]。Autoconf并不受程式语言限制，常用于C、C++、Erlang和Objective-C。配置脚本控制了一个软件包在特定系统上的安装。在进行一系列测试后，配置脚本从模板中生成makefile与头文件进而调整软件包，使之适应某一种系统。Autoconf与Automake、Libtool等软件组成了GNU构建系统。
-
+GNU Autoconf是一个在Bourne shell下制作供编译、安装和打包软件的配置脚本（Configure_script (computing)）的工具。  
+Autoconf并不受程式语言限制，常用于C、C++、Erlang和Objective-C。  
+配置脚本控制了一个软件包在特定系统上的安装。在进行一系列测试后，配置脚本从模板中生成makefile与头文件进而调整软件包，使之适应某一种系统。  
+Autoconf与Automake、Libtool等软件组成了GNU构建系统。
 
 ## libtool
 
