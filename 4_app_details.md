@@ -190,39 +190,69 @@ pigz是一个C写的打包解包开源工具。 它代表gzip的并行实现，�
 Cloc是一款使用Perl语言开发的开源代码统计工具，支持多平台使用、多语言识别，能够计算指定目标文件或文件夹中的文件数（files）、空白行数（blank）、注释行数（comment）和代码行数（code）。
 
 ### tree：树状目录结构 
-以树状图列出目录的内容，让你一目了然
+一款用于展示目录树状结构的命令工具
 
 ### pv：页面浏览
 PV（page view）即页面浏览量，通常是衡量一个网络新闻频道或网站甚至一条网络新闻的主要指标。网页浏览数是评价网站流量最常用的指标之一，简称为PV。监测网站PV的变化趋势和分析其变化原因是很多站长定期要做的工作。 Page Views中的Page一般是指普通的html网页，也包含php、jsp等动态产生的html内容。来自浏览器的一次html内容请求会被看作一个PV，逐渐累计成为PV总数。
+
+## 命令行工具
 
 ### jq：处理JSON 数据的工具 
 jq 是一款命令行下处理JSON 数据的工具。 其可以接收标准输入，命令管道或者文件中的JSON 数据，经过一系列的过滤器(filters)和表达式的转后形成我们需要的数据结构并将结果输出到标准输出中。 
 
 注：JSON是JavaScript Object Notation的简称，是一种轻量的数据表示方法
 
-### pup 
+### pup：命令行HTML解析工具。
+pup 是一个用于处理 HTML 的命令行工具。它从标准输入读取，打印到标准输出，并允许用户使用 CSS 选择器过滤页面的某些部分。受 jq 的启发，pup 旨在成为一种从终端探索 HTML 的快速灵活的方式。
 
-### datamash 
+### datamash: linux极简统计分析工具 
+datamash 作为一个命令行程序可以对文本文件进行数字和文本相关的基本统计操作（虽说基本但是所有的操作都足够常用高频）。 
 
-### miller 
+### miller: 数据文件调整工具 
+Miller 是一个命令行工具，用于查询、调整和重新格式化各种格式的数据文件，包括CSV、TSV、JSON 和JSON Lines。
 
-### tsv-utils 
+### tsv-utils：大型表格数据文件处理工具 
+tsv-utils：eBay的TSV实用程序：用于大型表格数据文件的命令行工具。 过滤，统计，抽样，联接等
 
-### bat 
+### bat：cat命令升级版 
+bat 是命令行下一款用来显示文件内容的工具，bat 命令功能跟常用命令 cat 类似。只是 bat 功能上更加强大一些，bat 在cat命令的基础上加入了行号显示、代码高亮和 Git 集成。
 
-### exa 
+### exa：ls命令升级版
+ exa 是 ls 命令的一个可替代方案。
 
-### hyperfine 
+它色彩艳丽，还可以显示 git 状态等其他信息，自动将文件大小转换为方便人们阅读的单位，并且所有这些都保持与 ls 几乎相同的执行速度。
 
-### ripgrep   
+### hyperfine：命令行基准测试工具 
+特性：
+ 
+支持统计跨测试运行结果
+支持任意 shell 命令
+持续反馈基准进度和估计进度
+支持在做正式基准之前执行预测试运行
+每次运行前设置缓存清除命令
+异常值统计
+支持多种格式导出结果：CSV、JSON、Markdown。
+参数化基准测试
+跨平台
 
-### tealdeer
+https://github.com/chinanf-boy/hyperfine-zh
 
-### librsvg 
+### ripgrep：grep命令升级版   
+Ripgrep 是命令行下一个基于行的搜索工具，RipGrep 使用Rust 开发，可以在多平台下运行，支持Mac、Linux 和Windows 等平台。 
+
+### tealdeer：man命令简化版  
+Too long, Don't read, 简化版的man pages查看工具。 
+
+### librsvg：SVG渲染库 
+一个SVG文件可以被转换为PNG
+
+注：可缩放矢量图形（英语：Scalable Vector Graphics，缩写：SVG）是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式。
 
 ### udunits 
+UDUNITS 包支持物理量单位。它的 C 库提供了单位的算术操作和兼容单位之间的数值转换。该软件包包含一个扩展的单元数据库，它采用 XML 格式并且用户可扩展。
 
 ### proxychains-ng 
+ProxyChains 是Linux 和其他unix 下的代理工具。 它可以使任何程序通过代理上网， 允许TCP 和DNS 通过代理隧道， 支持HTTP、 SOCKS4 和SOCKS5 类型的代理服务器， 并且可配置多个代理。 
 
 ### yasm
 
