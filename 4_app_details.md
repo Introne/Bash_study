@@ -2,11 +2,11 @@
 
 在Linux下进行嵌入式开发，我们需要使用gcc、make、cmake等工具来编译。
 
-    源文件较少时可以使用直接调用gcc工具进行编译。
+源文件较少时可以使用直接调用gcc工具进行编译。
 
-    源码文件较多时，可借用make工具。make通过解析Makefile文件来执行一些gcc命令进行编译。
+源码文件较多时，可借用make工具。make通过解析Makefile文件来执行一些gcc命令进行编译。
 
-    简单的项目，Makefile还可以自己写一写。但实际项目中，我们很少直接编写Makefile，而是借助cmake工具来生成。cmake根据一个CMakeLists.txt文件来生成不同平台的Makefile文件，达到跨平台的作用。
+简单的项目，Makefile还可以自己写一写。但实际项目中，我们很少直接编写Makefile，而是借助cmake工具来生成。cmake根据一个CMakeLists.txt文件来生成不同平台的Makefile文件，达到跨平台的作用。
 
 
 ## gcc
