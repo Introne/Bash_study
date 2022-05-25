@@ -99,7 +99,7 @@ sed：Stream Editor文本流编辑，能配合正则表达式使用。
 's/代表替换：'s/查找内容/替换为的字串/'
 \表示转义
 
-### head -n 1（<font color=skyBlue>不太确定该命令在此处的意义</font>）
+### head -n 1（<font color=Blue>不太确定该命令在此处的意义</font>）
 将上个管道的输出perl/5.34.0，首行输出
 
 head命令
@@ -156,7 +156,7 @@ hash大大提高命令的调用速率。
 	-t openssl 查看openssl命令路径（hash表中没有的话，可以调用which命令）
 	-p /usr/bin/openssl aliesopenssl 往hash表中添加一条，执行aliesopenssl即	执行openssl命令（起别名）
 
-### cpanm（<font color=VioletRed>不太理解hash cpanm的意思，是判断是否有安装后续命令的意思么？</font>）
+### cpanm（<font color=Red>不太理解hash cpanm的意思，是判断是否有安装后续命令的意思么？</font>）
 cpanm是安装 Perl模块的最方便的方法。
 
 ### 双竖线‘||’
