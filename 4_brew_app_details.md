@@ -2,11 +2,11 @@
 
 在Linux下进行嵌入式开发，我们需要使用gcc、make、cmake等工具来编译。
 
-    源文件较少时可以使用直接调用gcc工具进行编译。
+源文件较少时可以使用直接调用gcc工具进行编译。
 
-    源码文件较多时，可借用make工具。make通过解析Makefile文件来执行一些gcc命令进行编译。
+源码文件较多时，可借用make工具。make通过解析Makefile文件来执行一些gcc命令进行编译。
 
-    简单的项目，Makefile还可以自己写一写。但实际项目中，我们很少直接编写Makefile，而是借助cmake工具来生成。cmake根据一个CMakeLists.txt文件来生成不同平台的Makefile文件，达到跨平台的作用。
+简单的项目，Makefile还可以自己写一写。但实际项目中，我们很少直接编写Makefile，而是借助cmake工具来生成。cmake根据一个CMakeLists.txt文件来生成不同平台的Makefile文件，达到跨平台的作用。
 
 
 ## gcc
@@ -48,7 +48,7 @@ makefile用来定义整个工程的编译规则。一个工程中的源文件计
 
 makefile带来的好处就是——“自动化编译”，一旦写好，只需要一个make命令，整个工程完全自动编译，极大的提高了软件开发的效率。make是一个命令工具，是一个解释makefile中指令的命令工具，一般来说，大多数的IDE都有这个命令，比如：Delphi的make，Visual C++的nmake，Linux下GNU的make。可见，makefile都成为了一种在工程方面的编译方法。
 
-## cmake
+## cmake：C/C++编译系统
 
 CMake是一种跨平台的构建系统， 类似于Makefile, 是专为C/C++开发的一套构建系统。
 
@@ -68,12 +68,12 @@ pkg-config 是一个常用的库信息提取工具。能根据软件安装时软
 
 ## 语法分析器
 
-### bison
+### bison：生成器
 bison 是一个语法分析器的生成器。
 
 它读取用户提供的语法的产生式，生成一个 C 语言格式的 LALR(1) 动作表
 
-### flex
+### flex：生成工具
 Flex是一个生成词法分析器的工具，它可以利用正则表达式来生成匹配相应字符串的C语言代码，其语法格式基本同Lex相同。
 
 ## 其他
@@ -154,7 +154,7 @@ curl是一个利用URL语法在命令行下工作的文件传输工具。 它支
 curl支持的通信协议有FTP、FTPS、HTTP、HTTPS、TFTP、SFTP、Gopher、SCP、Telnet、DICT、FILE、LDAP、LDAPS、IMAP、POP3、SMTP和RTSP。  
 curl还支持SSL认证、HTTP POST、HTTP PUT、FTP上传, HTTP form based upload、proxies、HTTP/2、cookies、用户名+密码认证(Basic, Plain, Digest, CRAM-MD5, NTLM, Negotiate and Kerberos)、file transfer resume、proxy tunneling。
 
-### wget
+### wget：下载
 wget 是一个从网络上自动下载文件的自由工具，支持通过HTTP、HTTPS、FTP 三个最常见的TCP/IP协议 下载，并可以使用HTTP 代理。
  "wget" 这个名称来源于“World Wide Web” 与“get” 的结合。
 
@@ -183,10 +183,10 @@ htop用C语言编写，采用了ncurses库。htop的名称源于其作者的名�
 ### parallel：并行执行脚本
 GNU parallel是用于Linux和其他类Unix操作系统的命令行驱动的实用工具，它允许用户并行的执行shell脚本。 
 
-### pigz 
+### pigz：压缩解压
 pigz是一个C写的打包解包开源工具。 它代表gzip的并行实现，是gzip的全功能替代品，在压缩数据时利用多个处理器和多个内核，即支持多线程并行处理，解压缩比gzip快。
 
-### cloc 
+### cloc: 开源代码统计工具
 Cloc是一款使用Perl语言开发的开源代码统计工具，支持多平台使用、多语言识别，能够计算指定目标文件或文件夹中的文件数（files）、空白行数（blank）、注释行数（comment）和代码行数（code）。
 
 ### tree：树状目录结构 
@@ -225,8 +225,6 @@ bat 是命令行下一款用来显示文件内容的工具，bat 命令功能跟
 ### hyperfine：命令行基准测试工具 
 基准测试是一项测试或一系列测试，用来确定某个计算机硬件运行起来的状况有多好。在许多情况下，“基准测试”实际上等同于“压力测试”。通过测试硬件的极限，然后可以将测得的结果与其他硬件测得的结果作一番比较。
 
-https://github.com/chinanf-boy/hyperfine-zh
-
 ### ripgrep：grep命令升级版   
 Ripgrep 是命令行下一个基于行的搜索工具，RipGrep 使用Rust 开发，可以在多平台下运行，支持Mac、Linux 和Windows 等平台。 
 
@@ -238,18 +236,17 @@ Too long, Don't read, 简化版的man pages查看工具。
 
 注：可缩放矢量图形（英语：Scalable Vector Graphics，缩写：SVG）是一种基于可扩展标记语言（XML），用于描述二维矢量图形的图形格式。
 
-### udunits 
+### udunits:  数值转换
 UDUNITS 包支持物理量单位。它的 C 库提供了单位的算术操作和兼容单位之间的数值转换。该软件包包含一个扩展的单元数据库，它采用 XML 格式并且用户可扩展。
 
-### proxychains-ng 
+### proxychains-ng:  代理工具
 ProxyChains 是Linux 和其他unix 下的代理工具。 它可以使任何程序通过代理上网， 允许TCP 和DNS 通过代理隧道， 支持HTTP、 SOCKS4 和SOCKS5 类型的代理服务器， 并且可配置多个代理。 
 
-### openjdk
+### openjdk: 程序开发环境
 OpenJDK 是 Java 平台标准版 (Java SE) 的免费开源实现。
 
-标准版的Java平台是一个Java2的平台，为用户提供一个程序开发环境。   
-这个程序开发环境提供了开发与运行Java软件的编译器等开发工具、软件库及Java虚拟机。   
-它也是Java2平台、企业版本和Java网页服务的基础。
+Java平台为用户提供一个程序开发环境, 该程序开发环境提供了开发与运行Java软件的编译器等开发工具、软件库及Java虚拟机。   
+
 
 ### ant: Java的生成工具
 Ant是Java的生成工具，是Apache的核心项目；
@@ -260,19 +257,16 @@ Ant的主要目的就是把你想做的事情自动化，不用你手动一步�
 ### maven: Java项目的管理和构建工具 
 在了解Maven之前，我们先来看看一个Java项目需要的东西。首先，我们需要确定引入哪些依赖包。例如，如果我们需要用到commons logging，我们就必须把commons logging的jar包放入classpath。如果我们还需要log4j，就需要把log4j相关的jar包都放到classpath中。这些就是依赖包的管理。
 
-其次，我们要确定项目的目录结构。例如，src目录存放Java源码，resources目录存放配置文件，bin目录存放编译生成的.class文件。
+其次，我们要确定项目的目录结构。例如，src目录存放Java源码，resources目录存放配置文件，bin目录存放编译生成的.class文件。  
+此外，我们还需要配置环境，例如JDK的版本，编译打包的流程，当前代码的版本号。  
+最后，除了使用Eclipse这样的IDE进行编译外，我们还必须能通过命令行工具进行编译，才能够让项目在一个独立的服务器上编译、测试、部署。  
+这些工作难度不大，但是非常琐碎且耗时。如果每一个项目都自己搞一套配置，肯定会一团糟。我们需要的是一个标准化的Java项目管理和构建工具。  
 
-此外，我们还需要配置环境，例如JDK的版本，编译打包的流程，当前代码的版本号。
 
-最后，除了使用Eclipse这样的IDE进行编译外，我们还必须能通过命令行工具进行编译，才能够让项目在一个独立的服务器上编译、测试、部署。
-
-这些工作难度不大，但是非常琐碎且耗时。如果每一个项目都自己搞一套配置，肯定会一团糟。我们需要的是一个标准化的Java项目管理和构建工具。
-
-Maven就是是专门为Java项目打造的管理和构建工具，它的主要功能有：
-
-    提供了一套标准化的项目结构；
-    提供了一套标准化的构建流程（编译，测试，打包，发布……）；
-    提供了一套依赖管理机制。
+Maven就是是专门为Java项目打造的管理和构建工具，它的主要功能有：  
+提供了一套标准化的项目结构；  
+提供了一套标准化的构建流程（编译，测试，打包，发布……）；  
+提供了一套依赖管理机制。
 
 ## 脚本语言
 ### Lua 
@@ -297,55 +291,28 @@ gpg，GNUPG，是一款根据GNU协议开源的，openPGP标准的实现，其�
 ### Pandoc：Markdown写作进阶神器
 Pandoc是一款能够高质量转换文档格式的本地转换工具，其支持的语言十分丰富，而且转换后能够保持格式的完整性。
 
-### Graphviz
+### Graphviz： 绘制DOT语言脚本描述的图形
 Graphviz （英文：Graph Visualization Software的缩写）是一个由AT&T实验室启动的开源工具包，可以用于绘制DOT语言脚本描述的图形。
 
 DOT是一种文本图形描述语言。DOT语言文件通常具有.gv或是.dot的文件扩展名。当然，在编写好.dot或者.gv的文件之后，需要有专门的程序处理这些文件并将其渲染成为图片，dot就是其中一款程序，它可以将DOT语言描述的图形渲染成.png、.jpg、.pdf等多种类型。
 当然，作为工具，dot本身是很原始的，就像gcc之于c代码，g++之于cpp代码一样，或许某些程序员会热衷于在终端使用这些工具，但也有很多人喜欢交互式的界面，所以就有了gvedit之类的工具，它提供交互式的窗口来使用dot等工具渲染DOT语言描述的图形。
 
-### gnuplot
+### gnuplot： 交互式绘图工具
 Gnuplot是一个命令行的交互式绘图工具（command-driven interactive function plotting program）。用户通过输入命令，可以逐步设置或修改绘图环境，并以图形描述数据或函数，使我们可以借由图形做更进一步的分析。
 
 gnuplot是由Colin Kelly和Thomas Williams于1986年开始开发的科学绘图工具，支持二维和三维图形。它的功能是把数据资料和数学函数转换为容易观察的平面或立体的图形，它有两种工作方式，交互式方式和批处理方式，它可以让使用者很容易地读入外部的数据结果，在屏幕上显示图形，并且可以选择和修改图形的画法，明显地表现出数据的特性。
 
-### graphviz
+### graphviz: 图可视化工具
 Graphviz 是一个开源的图可视化工具，非常适合绘制结构化的图标和网络。Graphviz 使用一种叫 DOT 的语言来表示图形。
 
-### imagemagick 
+### imagemagick:  图片文件处理工具
 ImageMagick是一套功能强大、稳定而且开源的工具集和开发包，可以用来读、写和处理超过89种基本格式的图片文件，包括流行的TIFF、JPEG、GIF、 PNG、PDF以及PhotoCD等格式。利用ImageMagick，你可以根据web应用程序的需要动态生成图片, 还可以对一个（或一组）图片进行改变大小、旋转、锐化、减色或增加特效等操作，并将操作的结果以相同格式或其它格式保存，对图片的操作，即可以通过命令行进行，也可以用C/C++、Perl、Java、PHP、Python或Ruby编程来完成。同时ImageMagick提供了一个高质量的2D工具包，部分支持SVG。ImageMagic的主要精力集中在性能，减少bug以及提供稳定的API和ABI上。
 ImageMagick 是一个用来创建、编辑、合成图片的软件。它可以读取、转换、写入多种格式的图片。图片切割、颜色替换、各种效果的应用，图片的旋转、组合，文本，直线， 多边形，椭圆，曲线，附加到图片伸展旋转。ImageMagick是免费软件：全部源码开放，可以自由使用，复制，修改，发布。支持大多数的操作系统。
 
 
 
-### yasm 
-
-### yasm
-
-### yasm 
-
-### yasm 
-
-### yasm 
-
-### yasm
-
-### yasm 
-
-### yasm 
-
-### yasm 
-
-### yasm
-
-### yasm 
-
-### yasm 
-
-### yasm 
-
-### yasm
-
-# Link
-ant：https://blog.csdn.net/qq997404392/article/details/76986978
-Java教程: https://www.liaoxuefeng.com/wiki/1252599548343744/1309301146648610
+# Reference
+ant：https://blog.csdn.net/qq997404392/article/details/76986978  
+hyperfine: https://github.com/chinanf-boy/hyperfine-zh  
+Java教程: https://www.liaoxuefeng.com/wiki/1252599548343744/1309301146648610  
 imagemagick：https://www.jianshu.com/p/3b4527c69634
