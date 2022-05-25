@@ -225,8 +225,6 @@ bat 是命令行下一款用来显示文件内容的工具，bat 命令功能跟
 ### hyperfine：命令行基准测试工具 
 基准测试是一项测试或一系列测试，用来确定某个计算机硬件运行起来的状况有多好。在许多情况下，“基准测试”实际上等同于“压力测试”。通过测试硬件的极限，然后可以将测得的结果与其他硬件测得的结果作一番比较。
 
-https://github.com/chinanf-boy/hyperfine-zh
-
 ### ripgrep：grep命令升级版   
 Ripgrep 是命令行下一个基于行的搜索工具，RipGrep 使用Rust 开发，可以在多平台下运行，支持Mac、Linux 和Windows 等平台。 
 
