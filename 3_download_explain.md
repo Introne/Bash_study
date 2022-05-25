@@ -302,7 +302,7 @@ chmod +x $HOME/bin/faToTwoBit
 curl是一种数据传输程序，使用其中一种支持的协议（DICT，FILE，FTP，FTPS，GOPHER，HTTP，HTTPS，IMAP，IMAPS，LDAP，LDAPS，POP3，POP3S，RTMP，RTSP，SCP，SFTP，SMTP，SMTPS，TELNET和TFTP）从服务器或服务器传输数据的工具。该命令旨在无需用户交互即可工作。
 
 参数：
--L/--location 跟踪重定向（<font color=#FFB6C1>跟踪重定向什么意思</font>）
+-L/--location 跟踪重定向
 
 
 #### faToTwoBit: 将fasta格式改为 .2bit格式
