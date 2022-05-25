@@ -107,7 +107,7 @@ sed：Stream Editor文本流编辑，能配合正则表达式使用。
 's/代表替换：'s/查找内容/替换为的字串/'
 \表示转义
 
-### head -n 1（<font color="Blue">不太确定该命令在此处的意义</font>）
+### head -n 1（<font color=#FFB6C1>不太确定该命令在此处的意义</font>）
 
 将上个管道的输出perl/5.34.0，首行输出
 
@@ -199,7 +199,7 @@ Option:
 curl是一种数据传输程序，使用其中一种支持的协议（DICT，FILE，FTP，FTPS，GOPHER，HTTP，HTTPS，IMAP，IMAPS，LDAP，LDAPS，POP3，POP3S，RTMP，RTSP，SCP，SFTP，SMTP，SMTPS，TELNET和TFTP）从服务器或服务器传输数据的工具。该命令旨在无需用户交互即可工作。
 
 参数：
--L/--location 跟踪重定向（<font color="Blue">跟踪重定向什么意思</font>）
+-L/--location 跟踪重定向（<font color=#FFB6C1>跟踪重定向什么意思</font>）
 
 ## 安装Java
 
@@ -251,7 +251,7 @@ brew update 一次更新所有的包是非常方便的，但是有时候我们�
 brew pin $FORMULA      # 锁定某个包
 brew unpin $FORMULA    # 取消锁定
 
-### brew tap命令（<font color="Blue">期待进一步了解wang-q/tap的奇妙之处</font>）
+### brew tap命令（<font color=#FFB6C1>期待进一步了解wang-q/tap的奇妙之处</font>）
 
 Taps(third-party-repositories)
 
@@ -261,7 +261,7 @@ brew tap可以为brew软件的跟踪,更新和安装添加更多的的tap formul
 
 tap命令的仓库源默认来至于Github，但是这个命令也不限制于这一个地方
 
-## 安装gpg2 (<font color="Blue">有些困惑，如果不是mac的OS，就不需要安装gpg2了么</font>)
+## 安装gpg2 (<font color=#FFB6C1>  有些困惑，如果不是mac的OS，就不需要安装gpg2了么 </font>  )
 ```bash
 # large packages
 if [[ "$OSTYPE" == "darwin"* ]]; then
