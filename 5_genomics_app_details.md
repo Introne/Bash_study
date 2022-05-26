@@ -34,6 +34,32 @@ brew install edirect
 brew install sratoolkit
 ```
 
+
+### brew tap命令
+
+Taps(third-party-repositories)
+
+brew tap可以为brew软件的跟踪,更新和安装添加更多的的tap formulae
+
+如果你在核心仓库没有找到你需要的软件,那么你就需要安装第三方的仓库去安装你需要的软件
+
+tap命令的仓库源默认来至于Github，但是这个命令也不限制于这一个地方
+
+
+
+```bash
+# brew unlink proj
+brew install --force-bottle blast
+
+echo "==> Custom tap"
+brew tap wang-q/tap
+brew install faops multiz sparsemem intspan
+```
+### brew install --force
+'--force' 选项，移除之前缓存的版本，重新获取最新版本。
+'--force-bottle' 选项，如果已经存在当前版本，仍旧下载。即使在安装过程中，还未使用。
+
+
 # less used
 brew install augustus prodigal
 brew install megahit spades sga
@@ -41,12 +67,7 @@ brew install quast
 brew install ntcard
 brew install gatk freebayes
 
-# brew unlink proj
-brew install --force-bottle blast
 
-echo "==> Custom tap"
-brew tap wang-q/tap
-brew install faops multiz sparsemem intspan
 # brew install jrunlist jrange
 
 echo "==> circos"

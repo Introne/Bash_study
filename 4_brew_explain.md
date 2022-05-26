@@ -251,7 +251,7 @@ brew update 一次更新所有的包是非常方便的，但是有时候我们�
 brew pin $FORMULA      # 锁定某个包
 brew unpin $FORMULA    # 取消锁定
 
-### brew tap命令（<font color=#FFB6C1>期待进一步了解wang-q/tap的奇妙之处</font>）
+### brew tap命令
 
 Taps(third-party-repositories)
 
