@@ -235,7 +235,9 @@ Apple现在的主要操作系统，无论是macOS、iOS还是iPadOS，甚至是H
 
 ### brew link命令
 
-链接软件的所有安装文件到 ‘Homebrew prefix’，当安装软件时，这个会自动完成，但是对于DIY安装是非常有用的
+正常情况下，不需要主动执行此命令，因为行使brew install时，系统会自动链接软件的所有安装文件到 ‘Homebrew prefix’，
+
+但某些情况下，比如权限问题等，可能会导致link失败，此时需要自行link
 
 使用：link [–overwrite] [–dry-run] [–force] 软件名
 
