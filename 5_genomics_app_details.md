@@ -4,15 +4,15 @@
 ```bash
 #curl -fsSL https://raw.githubusercontent.com/wang-q/App-Anchr/master/share/install_dep.sh | bash
 ```
-### curl -fsSL
+### curl -fsSL参数
 
 curl是一种数据传输程序，使用其中一种支持的协议（DICT，FILE，FTP，FTPS，GOPHER，HTTP，HTTPS，IMAP，IMAPS，LDAP，LDAPS，POP3，POP3S，RTMP，RTSP，SCP，SFTP，SMTP，SMTPS，TELNET和TFTP）从服务器或服务器传输数据的工具。该命令旨在无需用户交互即可工作。
 
 参数：
--f/--fail                      连接失败时不显示http错误
--s/--silent                    静音模式。不输出任何东西
--S/--show-error                显示错误(该参数是否与-s重复)
--L/--location                  跟踪重定向
+-f/--fail                      连接失败时不显示http错误  
+-s/--silent                    静音模式。不输出任何东西  
+-S/--show-error                显示错误(该参数是否与-s重复)  
+-L/--location                  跟踪重定向  
 
 ## 安装生信softwares
 ```bash
@@ -38,7 +38,7 @@ echo "==> Custom tap"
 brew tap wang-q/tap
 brew install faops multiz sparsemem intspan
 ```
-### brew install --force
+### brew install --force参数
 '--force' 选项，移除之前缓存的版本，重新获取最新版本。
 '--force-bottle' 选项，如果已经存在当前版本，仍旧下载。即使在安装过程中，还未使用。
 
@@ -72,16 +72,16 @@ snwang@DESKTOP-T89G9DA:~$ brew --prefix
 ```
 1、源码安装一般包括几个步骤：配置（configure），编译（make），安装（make install）。
 
-2、其中configure是一个可执行脚本，在源码目录中执行可以完成自动的配置工作，即./configure。它有很多选项，在待安装的源码路径下使用命令./configure–help输出详细的选项列表。  
+2、其中configure是一个可执行脚本，在源码目录中执行可以完成自动的配置工作，即./configure。它有很多选项，在待安装的源码路径下使用命令./configure–help输出详细的选项列表。
+
 其中--prefix选项是配置安装的路径，如果不配置该选项，安装后可执行文件默认放在/usr/local/bin，库文件默认放在/usr/local/lib，配置文件默认放在/usr/local/etc，其它的资源文件放在/usr/local/share，比较凌乱。
 
-3、在实际的安装过程中，我们可以增加--prefix参数，这样可以将要安装的应用安装到指定的目录中，如  
-./configure --prefix=/usr/local/openssl  
+3、在实际的安装过程中，我们可以增加--prefix参数，这样可以将要安装的应用安装到指定的目录中，如./configure --prefix=/usr/local/openssl。  
 可以把所有资源文件放在/usr/local/test的路径中，不会杂乱。
 
 用了—prefix选项的另一个好处是卸载软件或移植软件。当某个安装的软件不再需要时，只须简单的删除该安装目录，就可以把软件卸载得干干净净；移植软件只需拷贝整个目录到另外一个机器即可（相同的操作系统）。
 
-### 特殊符号（\）
+### 特殊符号（\）放在末尾
 放在一行指令的最末端，表示紧接着的回车无效（其实也就是转义了Enter），后继新行的输入仍然作为当前指令的一部分。
 
 ### cd -
@@ -121,14 +121,16 @@ dirs: 列出当前堆栈中保存的目录列表
 # bioinformatics softwares"
 
 ### clustal-w：多序列比对工具
+使用最广和最经典的多序列比对软件
 ### mafft：多序列比对工具
-### muscle：多序列比对工具，其速度和准确度优于clustal
+### muscle：多序列比对工具
+是速度最快的多序列比对之一，其速度和准确度优于clustal
 ### trimal：比对序列修剪软件
 trimAl输入文件必须是比对完成的序列文件,同时此软件支持多种输入文件格式，如clustal, fasta, NBRF/PIR, nexus, phylip3.2, phylip等。
 
 修剪对齐完的比对序列构建的进化树更加精确。
 
-### lastz: 两序列比对
+### lastz: DNA序列比对程序，成对比对器
 ### diamond: 蛋白数据库的比对
 DIAMOND能够高效将翻译后的DNA序列或protein序列比对到参考蛋白质数据库。它基于C++语言编写，可实现多线程并行处理，这使得比对效率远远高于blast软件。在确定测序的reads来源于哪些微生物时，可通过将reads或reads组装后的contigs翻译后核苷酸序列或蛋白质序列比对到蛋白质参考数据库，如常用的NCBI的NR库（非冗余蛋白质数据库），进而找到数据中的微生物基因从而确定微生物。它有以下特点：
 

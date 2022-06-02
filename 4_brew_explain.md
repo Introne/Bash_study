@@ -189,8 +189,8 @@ Option:
 把错误输出到 “黑洞”
 
 2是标准错误的文件描述符
->是重定向符号，该重定向会覆盖原有内容
->/dev/null 是一个特殊的设备文件，这个文件接收到任何数据都会被丢弃。因此，null 这个设备通常也被称为位桶（bit bucket）或黑洞。
+\>是重定向符号，该重定向会覆盖原有内容
+\>/dev/null 是一个特殊的设备文件，这个文件接收到任何数据都会被丢弃。因此，null 这个设备通常也被称为位桶（bit bucket）或黑洞。
 
 综上，2>/dev/null 的意思就是将标准错误 stderr 删掉。
 
@@ -241,9 +241,11 @@ Apple现在的主要操作系统，无论是macOS、iOS还是iPadOS，甚至是H
 
 使用：link [–overwrite] [–dry-run] [–force] 软件名
 
-    指定 ‘–overwrite’ 选项，当链接时，Homebrew将删除 ‘Homebrew prefix’ 中已经存在的文件，会重新生成链接文件
-    指定 ‘–dry-run | -n’ 选项，Homebrew将列出所有将要生成连接的文件，并不会真正执行。获取传递了 ‘–overwrite’ 选项，将会列出要删除的文件，但并不会真正删除
-    指定 ‘–force’ 选项，Homebrew将允许keg-only软件被链接(默认情况下，keg-only不能被链接)
+指定 ‘–overwrite’ 选项，当链接时，Homebrew将删除 ‘Homebrew prefix’ 中已经存在的文件，会重新生成链接文件
+
+指定 ‘–dry-run | -n’ 选项，Homebrew将列出所有将要生成连接的文件，并不会真正执行。获取传递了 ‘–overwrite’ 选项，将会列出要删除的文件，但并不会真正删除
+
+指定 ‘–force’ 选项，Homebrew将允许keg-only软件被链接(默认情况下，keg-only不能被链接)
 
 ### brew pin命令
 
