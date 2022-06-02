@@ -96,9 +96,20 @@ pts/*为伪(虚拟)终端, 其中pts/0,1,2在桌面Linux中是标准输入，标
 
 
 # enter BASE_DIR
+```bash
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${BASE_DIR}" || exit
+```
 
+"${BASH_SOURCE[0]}"代表的是modules/tools/planning_traj_plot/run.sh。
+
+"dirname"表示提取参数里的目录，dirname "${BASH_SOURCE[0]}"表示提取bash脚本第一个参数里的目录，例如modules/tools/planning_traj_plot/run.sh”的目录为"modules/tools/planning_traj_plot。
+
+cd "$( dirname "${BASH_SOURCE[0]}" )"表示在当前目录的基础上，切换到子目录modules/tools/planning_traj_plot。
+
+DIR=cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd则表示，如果第一条语句顺利执行，就执行pwd显示当前目录，并将结果赋值给变量“DIR”。
+
+總之，得到shell脚本文件所在完整路径（绝对路径）及文件名（无论source,sh,.三种调用方式），且不改变shell的当前目录。
 
 ### &&
 当测试条件两个都为真时返回真(0)，有假为假。
@@ -137,3 +148,7 @@ stow -t "${HOME}"/.config/htop stow-htop2 -v 2
 
 Reference
 exit 1：https://blog.csdn.net/super_gnu/article/details/77099395
+
+
+Reference:
+https://blog.csdn.net/davidhopper/article/details/78989369
