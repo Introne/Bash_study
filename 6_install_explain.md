@@ -95,26 +95,31 @@ tty[1-6]就是用CTRL + ALT + F[1-6]所看到的那个终端; 即虚拟控制台
 pts/*为伪(虚拟)终端, 其中pts/0,1,2在桌面Linux中是标准输入，标准输出，标准出错。
 
 
-# enter BASE_DIR
+# 获取所执行脚本的绝对路径
 ```bash
 BASE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${BASE_DIR}" || exit
 ```
 
-"${BASH_SOURCE[0]}"代表的是modules/tools/planning_traj_plot/run.sh。
+BASH_SOURCE[0] - 等价于 BASH_SOURCE ,取得当前执行的 shell 文件所在的路径及文件名
 
-"dirname"表示提取参数里的目录，dirname "${BASH_SOURCE[0]}"表示提取bash脚本第一个参数里的目录，例如modules/tools/planning_traj_plot/run.sh”的目录为"modules/tools/planning_traj_plot。
+dirname - 去除文件名中的非目录部分，仅显示与目录有关的部分
 
-cd "$( dirname "${BASH_SOURCE[0]}" )"表示在当前目录的基础上，切换到子目录modules/tools/planning_traj_plot。
+$() - 相当于‘command’, 即获取command命令的结果
 
-DIR=cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd则表示，如果第一条语句顺利执行，就执行pwd显示当前目录，并将结果赋值给变量“DIR”。
+&& - 逻辑运算符号，只有当&&左边运行成功时才会运行&&右边的命令
 
-總之，得到shell脚本文件所在完整路径（绝对路径）及文件名（无论source,sh,.三种调用方式），且不改变shell的当前目录。
+总结
+该命令获取脚本源文件的文件路径名，获取其目录部分，然后 cd 到该目录，使用 pwd 获取当前目录的完整路径，然后将这个路径的值赋给变量 DIR。
 
-### &&
-当测试条件两个都为真时返回真(0)，有假为假。
 
-# stow configurations
+### 绝对路径和相对路径
+绝对路径是完整路径，用于指定从根目录或实际文件系统开始的文件或目录的位置。
+
+文件的相对路径是其相对于当前工作目录的位置，它不以斜杠(/)开头。它从正在进行的工作目录开始。
+
+# stow configurations（看不懂啊太难啦）
+```bash
 mkdir -p ~/.config
 
 log_warn "Restow dotfiles"
@@ -122,7 +127,7 @@ DIRS=( stow-git stow-htop stow-latexmk stow-perltidy stow-screen stow-wget stow-
 
 for d in ${DIRS[@]}; do
     log_info "${d}"
-    for f in $(find ${d} -maxdepth 1 | cut -sd / -f 2- | grep .); do
+    for f in   $(find ${d} -maxdepth 1 | cut -sd / -f 2- | grep .); do
         homef="${HOME}/${f}"
         if [ -h "${homef}" ] ; then
             log_debug "Symlink exists: [${homef}]"
@@ -136,6 +141,14 @@ for d in ${DIRS[@]}; do
     done
 	stow -t "${HOME}" "${d}" -v 2
 done
+```
+### makid -p参数
+-p 确保目录名称存在，不存在的就建一个
+
+### log_warn ""参数
+
+### dotfile
+指linux系统下home目录中以’.'开头的配置文件
 
 # don't ruin Ubuntu
 log_info "stwo-bash"
@@ -148,7 +161,4 @@ stow -t "${HOME}"/.config/htop stow-htop2 -v 2
 
 Reference
 exit 1：https://blog.csdn.net/super_gnu/article/details/77099395
-
-
-Reference:
-https://blog.csdn.net/davidhopper/article/details/78989369
+bash脚本：https://www.cnblogs.com/lestatzhang/p/10611309.html
